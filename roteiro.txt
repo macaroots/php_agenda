@@ -17,5 +17,8 @@ PHP sem Orientação a Objetos
         Procurar contatos
     Login
 
+Ataque SQL Injection
+    '; insert into contatos (nome) values ('oi'); select '
+    
 PHP com Orientação a Objetos
     
