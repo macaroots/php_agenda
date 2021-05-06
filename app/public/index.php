@@ -6,7 +6,7 @@ else {
     $nome = '%';
 }
 
-$user = 'test';
+$user = 'teste';
 $pass = '123';
 $conexao = new PDO('mysql:host=mysql;dbname=agenda', $user, $pass);
 $sql = "SELECT * FROM contatos WHERE nome like ?";
