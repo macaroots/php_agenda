@@ -1,5 +1,5 @@
 # php_agenda
-Exemplo em PHP de uma Agenda
+Exemplifica o uso de Docker, PHP + MySQL
 
 Clonar repositório:
 ```
