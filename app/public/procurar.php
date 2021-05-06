@@ -1,9 +1,17 @@
 <?php
+if (isset($_POST['nome'])) {
+    $nome = '%' . $_POST['nome'] . '%';
+}
+else {
+    $nome = '%';
+}
+
 $user = 'teste';
 $pass = '123';
 $conexao = new PDO('mysql:host=mysql;dbname=agenda', $user, $pass);
-$sql = "SELECT * FROM contatos";
+$sql = "SELECT * FROM contatos WHERE nome like ?";
 $consulta = $conexao->prepare($sql);
+$consulta->bindParam(1, $nome);
 ?>
 <html>
 <head>
@@ -21,6 +29,12 @@ $consulta = $conexao->prepare($sql);
 </header>
 <section>
     <h1>Agenda</h1>
+    <form method="POST">
+        <label>
+            Nome: <input name="nome" />
+        </label>
+        <button>Procurar</button>
+    </form>
 <?php
 if ($consulta->execute()) {
     while ($contato = $consulta->fetch(PDO::FETCH_ASSOC)) {
