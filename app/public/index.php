@@ -20,7 +20,7 @@ $consulta = $conexao->prepare($sql);
     </nav>
 </header>
 <section>
-    <h1>Agenda</h1>
+    <h1>Agenda Super Legal</h1>
 <?php
 if ($consulta->execute()) {
     while ($contato = $consulta->fetch(PDO::FETCH_ASSOC)) {
