@@ -12,3 +12,13 @@ docker-compose up -d
 ```
 * ```-d``` de Detach é opcional.
 * Talvez seja necesário permissão de super-usuário (```sudo```).
+
+Ligar serviços com Docker Compose:
+```
+docker-compose up -d
+```
+
+Acessar pelo navegador web:
+```
+http://localhost
+```
