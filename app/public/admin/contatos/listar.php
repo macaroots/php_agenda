@@ -1,14 +1,9 @@
 <?php
+include_once('../../../Agenda.php');
 
-$user = 'test';
-$pass = '123';
-$conexao = new PDO('mysql:host=mysql;dbname=agenda', $user, $pass);
-$consulta = $conexao->prepare("SELECT * FROM contatos");
-$contatos = array();
-if ($consulta->execute()) {
-    while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
-        $contatos[] = $linha;
-    }
-}
+// modelo
+$agenda = new Agenda();
+$contatos = $agenda->listar();
 
+// visao
 echo json_encode($contatos);

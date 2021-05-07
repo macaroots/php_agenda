@@ -1,9 +1,8 @@
 <?php
-$user = 'teste';
-$pass = '123';
-$conexao = new PDO('mysql:host=mysql;dbname=agenda', $user, $pass);
-$sql = "SELECT * FROM contatos";
-$consulta = $conexao->prepare($sql);
+include_once('../Agenda.php');
+
+$agenda = new Agenda();
+$contatos = $agenda->listar();
 ?>
 <html>
 <head>
@@ -22,8 +21,7 @@ $consulta = $conexao->prepare($sql);
 <section>
     <h1>Agenda Super Legal</h1>
 <?php
-if ($consulta->execute()) {
-    while ($contato = $consulta->fetch(PDO::FETCH_ASSOC)) {
+foreach ($contatos as $contato) {
 ?>
     <article>
         <h1><?php echo $contato['nome']; ?></h1>
@@ -31,7 +29,6 @@ if ($consulta->execute()) {
         <span>Desde <?php echo $contato['ano']; ?></span>
     </article>
 <?php
-    }
 }
 ?>
 </section>

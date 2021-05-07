@@ -1,4 +1,6 @@
 <?php
+include_once('../Agenda.php');
+
 if (isset($_POST['nome'])) {
     $nome = '%' . $_POST['nome'] . '%';
 }
@@ -6,12 +8,8 @@ else {
     $nome = '%';
 }
 
-$user = 'teste';
-$pass = '123';
-$conexao = new PDO('mysql:host=mysql;dbname=agenda', $user, $pass);
-$sql = "SELECT * FROM contatos WHERE nome like ?";
-$consulta = $conexao->prepare($sql);
-$consulta->bindParam(1, $nome);
+$agenda = new Agenda();
+$contatos = $agenda->procurar($nome);
 ?>
 <html>
 <head>
@@ -36,8 +34,7 @@ $consulta->bindParam(1, $nome);
         <button>Procurar</button>
     </form>
 <?php
-if ($consulta->execute()) {
-    while ($contato = $consulta->fetch(PDO::FETCH_ASSOC)) {
+foreach ($contatos as $contato) {
 ?>
     <article>
         <h1><?php echo $contato['nome']; ?></h1>
@@ -45,7 +42,6 @@ if ($consulta->execute()) {
         <span>Desde <?php echo $contato['ano']; ?></span>
     </article>
 <?php
-    }
 }
 ?>
 </section>

@@ -21,4 +21,12 @@ Ataque SQL Injection
     '; insert into contatos (nome) values ('oi'); select '
     
 PHP com Orientação a Objetos
+    Código limpo  - ok
+    Modularização - ok
+    Reuso         - ok
+    Herança
+    Polimorfismo
+    Template Method
+    Composição
     
+Tratar erros para encontrar classes em PHP
